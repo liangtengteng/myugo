@@ -1,14 +1,6 @@
 <template>
 	<view class="container">
-		<!-- 搜索栏 -->
-		<view class="search">
-			<!-- 搜索栏标签 -->
-			<view class="input-box">
-				<input type="text" />
-			</view>
-			<!-- 搜索的结果 -->
-			<view class="content"></view>
-	</view>
+		<search/>
 	<!-- 轮播图 -->
 	<swiper autoplay indicator-dots>
   		<swiper-item>
@@ -62,16 +54,67 @@
 				</navigator>
 			</view>
 		</view>
-	</view>
+		<view class="floor">
+			<!-- 标题 -->
+			<view class="title">
+				<image src="/static/uploads/pic_floor01_title.png"/>
+			</view>
+			<!-- 条目 -->
+			<view class="items">
+				<navigator url="">
+					<image src="/static/uploads/pic_floor01_1@2x.png"/>
+				</navigator>
+				<navigator url="">
+					<image src="/static/uploads/pic_floor01_2@2x.png"/>
+				</navigator>
+				<navigator url="">
+					<image src="/static/uploads/pic_floor01_3@2x.png"/>
+				</navigator>
+				<navigator url="">
+					<image src="/static/uploads/pic_floor01_4@2x.png"/>
+				</navigator>
+				<navigator url="">
+					<image src="/static/uploads/pic_floor01_5@2x.png"/>
+				</navigator>
+			</view>
+		</view>
+		<view class="floor">
+			<!-- 标题 -->
+			<view class="title">
+				<image src="/static/uploads/pic_floor01_title.png"/>
+			</view>
+			<!-- 条目 -->
+			<view class="items">
+				<navigator url="">
+					<image src="/static/uploads/pic_floor01_1@2x.png"/>
+				</navigator>
+				<navigator url="">
+					<image src="/static/uploads/pic_floor01_2@2x.png"/>
+				</navigator>
+				<navigator url="">
+					<image src="/static/uploads/pic_floor01_3@2x.png"/>
+				</navigator>
+				<navigator url="">
+					<image src="/static/uploads/pic_floor01_4@2x.png"/>
+				</navigator>
+				<navigator url="">
+					<image src="/static/uploads/pic_floor01_5@2x.png"/>
+				</navigator>
+			</view>
+		</view>
 	</view>
 </template>
 
 <script>
+import search from '@/components/search'
 	export default {
 		data() {
 			return {
 				title: 'Hello'
 			}
+		},
+		components:{
+			search
 		},
 		onLoad() {
 
@@ -83,16 +126,7 @@
 </script>
 
 <style lang='less'>
-	.search{
-		.input-box{
-			background-color: #EB4450;
-			padding: 20rpx;
-			input{
-				background-color: #fff;
-				border-radius: 6rpx;
-			}
-		}
-	}
+	
 	swiper{
 		height: 340rpx;
 		image{
