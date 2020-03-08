@@ -1,9 +1,15 @@
 <template>
-	<view class="content">
-		<image class="logo" src="/static/logo.png"></image>
-		<view>
-			<text class="title">{{title}}</text>
-		</view>
+	<view class="container">
+		<!-- 搜索栏 -->
+		<view class="search">
+			<!-- 搜索栏标签 -->
+			<view class="input-box">
+				<input type="text" />
+			</view>
+			<!-- 搜索的结果 -->
+			<view class="content"></view>
+	</view>
+	
 	</view>
 </template>
 
@@ -23,20 +29,16 @@
 	}
 </script>
 
-<style>
-	.content {
-		text-align: center;
-		height: 400upx;
+<style lang='less'>
+	.search{
+		.input-box{
+			background-color: #EB4450;
+			padding: 20rpx;
+			input{
+				background-color: #fff;
+				border-radius: 6rpx;
+			}
+		}
 	}
 
-	.logo {
-		height: 200upx;
-		width: 200upx;
-		margin-top: 200upx;
-	}
-
-	.title {
-		font-size: 36upx;
-		color: #8f8f94;
-	}
 </style>
