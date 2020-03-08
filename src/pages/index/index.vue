@@ -9,6 +9,18 @@
 			<!-- 搜索的结果 -->
 			<view class="content"></view>
 	</view>
+	<!-- 轮播图 -->
+	<swiper autoplay indicator-dots>
+  		<swiper-item>
+    		<image src='/static/uploads/banner1.png'/>
+  		</swiper-item>
+  		<swiper-item>
+    		<image src='/static/uploads/banner2.png'/>
+  		</swiper-item>
+  		<swiper-item>
+    		<image src='/static/uploads/banner3.png'/>
+  		</swiper-item>
+	</swiper>
 	
 	</view>
 </template>
@@ -40,5 +52,12 @@
 			}
 		}
 	}
-
+	swiper{
+		height: 340rpx;
+		image{
+			width: 750rpx;
+			height: 340rpx;
+		}
+	}
+	
 </style>
