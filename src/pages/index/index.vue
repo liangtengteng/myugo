@@ -57,6 +57,8 @@ import search from '@/components/search'
 				this.pageHeight = data.height +'px'
 			},
 			querySwiperData(){
+				//使用插件
+				this.$request()
 				//获取轮播图数据
 				wx.request({
 					url:'https://api-ugo-dev.itheima.net/api/public/v1/home/swiperdata',
