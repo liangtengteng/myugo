@@ -20,11 +20,17 @@ export default {
   methods: {
     goSearch () {
       console.log('hello')
+      const {windowHeight} = uni.getSystemInfoSync()
+      //将可视区域高度传递给父组件
+      this.$emit('window-height',{height:windowHeight})
       // 当输入框获取焦点时，在父元素添加一个类名 focused
       this.isFocused = true
       this.placeholder = '请输入想要的商品'
     },
     handleCancel () {
+      this.$emit('window-height',{
+        pageHeight:'auto'
+      })
       // 取消动作：恢复原始状态
       this.isFocused = false
       this.placeholder = ''
