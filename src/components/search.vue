@@ -28,6 +28,7 @@ export default {
       this.placeholder = '请输入想要的商品'
     },
     handleCancel () {
+      //点击取消，恢复
       this.$emit('window-height',{
         pageHeight:'auto'
       })

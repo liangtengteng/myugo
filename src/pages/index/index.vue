@@ -3,14 +3,8 @@
 		<search @window-height="handleWindowHeight"/>
 	<!-- 轮播图 -->
 	<swiper autoplay indicator-dots>
-  		<swiper-item>
-    		<image src='/static/uploads/banner1.png'/>
-  		</swiper-item>
-  		<swiper-item>
-    		<image src='/static/uploads/banner2.png'/>
-  		</swiper-item>
-  		<swiper-item>
-    		<image src='/static/uploads/banner3.png'/>
+  		<swiper-item :key='item.goods_id' v-for="item in swiperData">
+    		<image :src='item.image_src'/>
   		</swiper-item>
 	</swiper>
 	<!-- 导航菜单 -->
@@ -112,7 +106,8 @@ import search from '@/components/search'
 		data() {
 			return {
 				title: 'Hello',
-				pageHeight:'auto'
+				pageHeight:'auto',
+				swiperData:[]
 			}
 
 		},
@@ -120,11 +115,20 @@ import search from '@/components/search'
 			search
 		},
 		onLoad() {
-
+			this.querySwiperData()
 		},
 		methods: {
 			handleWindowHeight(data){
 				this.pageHeight = data.height +'px'
+			},
+			querySwiperData(){
+				//获取轮播图数据
+				wx.request({
+					url:'https://api-ugo-dev.itheima.net/api/public/v1/home/swiperdata',
+					success:(res)=>{
+						this.swiperData = res.data.message
+					}
+				})
 			}
 		}
 	}
