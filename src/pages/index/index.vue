@@ -15,75 +15,15 @@
 	</view>
 	<!-- // 楼层商品 -->
 	<view class="floors">
-		<view class="floor">
+		<view class="floor" :key="index" v-for="(item,index) in floorData">
 			<!-- 标题 -->
 			<view class="title">
-				<image src="/static/uploads/pic_floor01_title.png"/>
+				<image :src="item.floor_title.image_src"/>
 			</view>
 			<!-- 条目 -->
 			<view class="items">
-				<navigator url="">
-					<image src="/static/uploads/pic_floor01_1@2x.png"/>
-				</navigator>
-				<navigator url="">
-					<image src="/static/uploads/pic_floor01_2@2x.png"/>
-				</navigator>
-				<navigator url="">
-					<image src="/static/uploads/pic_floor01_3@2x.png"/>
-				</navigator>
-				<navigator url="">
-					<image src="/static/uploads/pic_floor01_4@2x.png"/>
-				</navigator>
-				<navigator url="">
-					<image src="/static/uploads/pic_floor01_5@2x.png"/>
-				</navigator>
-			</view>
-		</view>
-		<view class="floor">
-			<!-- 标题 -->
-			<view class="title">
-				<image src="/static/uploads/pic_floor01_title.png"/>
-			</view>
-			<!-- 条目 -->
-			<view class="items">
-				<navigator url="">
-					<image src="/static/uploads/pic_floor01_1@2x.png"/>
-				</navigator>
-				<navigator url="">
-					<image src="/static/uploads/pic_floor01_2@2x.png"/>
-				</navigator>
-				<navigator url="">
-					<image src="/static/uploads/pic_floor01_3@2x.png"/>
-				</navigator>
-				<navigator url="">
-					<image src="/static/uploads/pic_floor01_4@2x.png"/>
-				</navigator>
-				<navigator url="">
-					<image src="/static/uploads/pic_floor01_5@2x.png"/>
-				</navigator>
-			</view>
-		</view>
-		<view class="floor">
-			<!-- 标题 -->
-			<view class="title">
-				<image src="/static/uploads/pic_floor01_title.png"/>
-			</view>
-			<!-- 条目 -->
-			<view class="items">
-				<navigator url="">
-					<image src="/static/uploads/pic_floor01_1@2x.png"/>
-				</navigator>
-				<navigator url="">
-					<image src="/static/uploads/pic_floor01_2@2x.png"/>
-				</navigator>
-				<navigator url="">
-					<image src="/static/uploads/pic_floor01_3@2x.png"/>
-				</navigator>
-				<navigator url="">
-					<image src="/static/uploads/pic_floor01_4@2x.png"/>
-				</navigator>
-				<navigator url="">
-					<image src="/static/uploads/pic_floor01_5@2x.png"/>
+				<navigator url="" :key="i" v-for="(img,i) in item.product_list">
+					<image :src="img.image_src"/>
 				</navigator>
 			</view>
 		</view>
@@ -99,7 +39,8 @@ import search from '@/components/search'
 				title: 'Hello',
 				pageHeight:'auto',
 				swiperData:[],
-				navsData:[]
+				navsData:[],
+				floorData:[]
 			}
 
 		},
@@ -109,6 +50,7 @@ import search from '@/components/search'
 		onLoad() {
 			this.querySwiperData()
 			this.queryNavsData()
+			this.queryFloorData()
 		},
 		methods: {
 			handleWindowHeight(data){
@@ -129,6 +71,15 @@ import search from '@/components/search'
 					url:'https://api-ugo-dev.itheima.net/api/public/v1/home/catitems',
 					success:(res)=>{
 						this.navsData = res.data.message
+					}
+				})
+			},
+			queryFloorData(){
+				//获取轮播图数据
+				wx.request({
+					url:'https://api-ugo-dev.itheima.net/api/public/v1/home/floordata',
+					success:(res)=>{
+						this.floorData = res.data.message
 					}
 				})
 			}
