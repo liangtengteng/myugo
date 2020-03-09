@@ -56,34 +56,49 @@ import search from '@/components/search'
 			handleWindowHeight(data){
 				this.pageHeight = data.height +'px'
 			},
-			querySwiperData(){
-				//使用插件
-				this.$request()
-				//获取轮播图数据
-				wx.request({
-					url:'https://api-ugo-dev.itheima.net/api/public/v1/home/swiperdata',
-					success:(res)=>{
-						this.swiperData = res.data.message
-					}
+			async querySwiperData(){
+				// 获取轮播图数据
+				const {message} = await this.$request({
+					path:'home/swiperdata'
 				})
+				this.swiperData = message
+				// //使用插件
+				// this.$request()
+				// //获取轮播图数据
+				// wx.request({
+				// 	url:'https://api-ugo-dev.itheima.net/api/public/v1/home/swiperdata',
+				// 	success:(res)=>{
+				// 		this.swiperData = res.data.message
+				// 	}
+				// })
 			},
-			queryNavsData(){
-				//获取轮播图数据
-				wx.request({
-					url:'https://api-ugo-dev.itheima.net/api/public/v1/home/catitems',
-					success:(res)=>{
-						this.navsData = res.data.message
-					}
+			async queryNavsData(){
+				// 获取导航菜单数据
+				const {message} = await this.$request({
+					path:'home/catitems'
 				})
+				this.navsData = message
+				//获取轮播图数据
+				// wx.request({
+				// 	url:'https://api-ugo-dev.itheima.net/api/public/v1/home/catitems',
+				// 	success:(res)=>{
+				// 		this.navsData = res.data.message
+				// 	}
+				// })
 			},
-			queryFloorData(){
-				//获取轮播图数据
-				wx.request({
-					url:'https://api-ugo-dev.itheima.net/api/public/v1/home/floordata',
-					success:(res)=>{
-						this.floorData = res.data.message
-					}
+			async queryFloorData(){
+				// 获取导航栏菜单数据
+				const {message} = await this.$request({
+					path:'home/floordata'
 				})
+				this.floorData = message
+				//获取轮播图数据
+				// wx.request({
+				// 	url:'https://api-ugo-dev.itheima.net/api/public/v1/home/floordata',
+				// 	success:(res)=>{
+				// 		this.floorData = res.data.message
+				// 	}
+				// })
 			}
 		}
 	}
