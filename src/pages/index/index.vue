@@ -9,17 +9,8 @@
 	</swiper>
 	<!-- 导航菜单 -->
 	<view class="navs">
-		<navigator url="">
-			<image src="/static/uploads/icon_index_nav_1@2x.png"/>
-		</navigator>
-		<navigator url="">
-			<image src="/static/uploads/icon_index_nav_2@2x.png"/>
-		</navigator>
-		<navigator url="">
-			<image src="/static/uploads/icon_index_nav_3@2x.png"/>
-		</navigator>
-		<navigator url="">
-			<image src="/static/uploads/icon_index_nav_4@2x.png"/>
+		<navigator url="" :key="index" v-for="(item,index) in navsData">
+			<image :src="item.image_src"/>
 		</navigator>
 	</view>
 	<!-- // 楼层商品 -->
@@ -107,7 +98,8 @@ import search from '@/components/search'
 			return {
 				title: 'Hello',
 				pageHeight:'auto',
-				swiperData:[]
+				swiperData:[],
+				navsData:[]
 			}
 
 		},
@@ -116,6 +108,7 @@ import search from '@/components/search'
 		},
 		onLoad() {
 			this.querySwiperData()
+			this.queryNavsData()
 		},
 		methods: {
 			handleWindowHeight(data){
@@ -127,6 +120,15 @@ import search from '@/components/search'
 					url:'https://api-ugo-dev.itheima.net/api/public/v1/home/swiperdata',
 					success:(res)=>{
 						this.swiperData = res.data.message
+					}
+				})
+			},
+			queryNavsData(){
+				//获取轮播图数据
+				wx.request({
+					url:'https://api-ugo-dev.itheima.net/api/public/v1/home/catitems',
+					success:(res)=>{
+						this.navsData = res.data.message
 					}
 				})
 			}
