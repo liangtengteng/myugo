@@ -151,6 +151,18 @@
     
     components: {
       search
+    },
+    onLoad(){
+      this.loadData()
+    },
+    methods:{
+     async loadData(){
+        // 调用分类接口获取数据
+        const {message} = await this.$request({
+          psth:'categories'
+        })
+        this.categories = message
+      }
     }
   }
 </script>
